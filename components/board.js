@@ -1,7 +1,9 @@
 import List from "./list"
 import Card from "./card"
+import { todoList, inProgressList, doneList } from "./data"
 
 function Board() {
+  console.log(todoList)
   return (
     <div className="flex flex-col flex-1 gap-4 p-4 ">
       <div>
