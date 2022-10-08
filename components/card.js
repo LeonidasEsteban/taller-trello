@@ -1,9 +1,21 @@
 import Image from "next/image"
 
 
-function Card({ title, user, comments = [] }) {
+function Card({ title, user, comments = [], id, setDragged }) {
+  function handleDragStart(event) {
+    console.log(event.target.closest('[data-id]').dataset.id)
+    setDragged({
+      data: {
+        title,
+        user,
+        comments,
+        id,
+      },
+      list: event.target.closest('[data-id]').dataset.id
+    })
+  }
   return (
-    <div className="flex flex-col gap-4 p-2 text-gray-900 bg-white rounded-sm">
+    <div draggable onDragStart={handleDragStart} className="flex flex-col gap-4 p-2 text-gray-900 bg-white rounded-sm">
       <div className="flex justify-between">
         <p>
           {title}
