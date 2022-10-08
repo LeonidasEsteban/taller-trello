@@ -3,7 +3,6 @@ import Card from "./card"
 import { todoList, inProgressList, doneList } from "./data"
 
 function Board() {
-  console.log(todoList)
   return (
     <div className="flex flex-col flex-1 gap-4 p-4 ">
       <div>
@@ -13,21 +12,30 @@ function Board() {
       </div>
       <main className="flex flex-1 gap-6 ">
         <List title="TODO">
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
-          <Card title="Implementar el modal" />
+          {
+            todoList.map(item => (
+              <Card {...item} key={item.id} />
+            ))
+          }
+
         </List>
-        <List />
-        <List />
+        <List title="In Progress">
+          {
+            inProgressList.map(item => (
+              <Card {...item} key={item.id} />
+            ))
+          }
+
+        </List>
+        <List title="Done">
+          {
+            doneList.map(item => (
+              <Card {...item} key={item.id} />
+            ))
+          }
+
+        </List>
+
       </main>
     </div>
   )
